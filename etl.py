@@ -24,7 +24,7 @@ class ETL:
     def __init__(self, conn: _connection, storage: RedisStorage):
         self.conn = conn
         self.storage = storage
-        self.es = Elasticsearch(hosts="localhost")
+        self.es = Elasticsearch(hosts="es")
         # Размер пакетного запроса
         self.batch_size = 10
 
@@ -253,7 +253,7 @@ if __name__ == "__main__":
 
     try:
         with psycopg2.connect(**dsl) as pg_conn:
-            redis_adapter = Redis(host="localhost")
+            redis_adapter = Redis(host="redis")
             storage = RedisStorage(redis_adapter=redis_adapter)
             etl = ETL(conn=pg_conn, storage=storage)
             etl()
