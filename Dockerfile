@@ -24,4 +24,4 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /etl/
-CMD ["sh"]
+CMD ["python", "etl.py"]
